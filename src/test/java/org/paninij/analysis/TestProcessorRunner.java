@@ -20,6 +20,9 @@ package org.paninij.analysis;
 import boa.types.Ast;
 
 import javax.tools.JavaFileObject;
+
+import org.paninij.ast.util.ASTToSystemGraphConverter;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,9 +42,11 @@ public class TestProcessorRunner {
                 .compilesWithoutError();
         assertTrue(proc.getASTRoots().size() >= 1);
 
-        for (Ast.ASTRoot root : proc.getASTRoots()) {
+        // invoke ASTToSystemGraph generator
+        new ASTToSystemGraphConverter(proc.getASTRoots());
+        /*for (Ast.ASTRoot root : proc.getASTRoots()) {
             System.out.println(root.toString());
-        }
+        }*/
     }
 
     public static void processJavaSourceResourceFiles(String... testSrcFiles) {

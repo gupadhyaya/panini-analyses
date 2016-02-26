@@ -21,7 +21,7 @@ import java.util.List;
 import boa.types.Ast.*;
 
 /**
- * Boa abstract AST visitor.
+ * Abstract AST visitor inspired from BoaAbstractVisitor
  * 
  * The <code>visit()</code> methods first call <code>preVisit()</code> for the node.
  * If <code>preVisit()</code> returns <code>true</code>, then each of that node's children are visited and then <code>postVisit()</code> is called.
@@ -32,13 +32,13 @@ import boa.types.Ast.*;
  * @author rdyer
  * @author ganeshau
  */
-public abstract class BoaAbstractVisitor {
+public abstract class AbstractVisitor {
 	/**
 	 * Initializes any visitor-specific data before starting a visit.
 	 * 
 	 * @return itself, to allow method chaining
 	 */
-	public BoaAbstractVisitor initialize() {
+	public AbstractVisitor initialize() {
 		return this;
 	}
 
