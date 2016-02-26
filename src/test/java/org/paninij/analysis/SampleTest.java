@@ -1,4 +1,4 @@
-package org.paninij.analyses;
+package org.paninij.analysis;
 
 import java.util.Collection;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import static org.paninij.analyses.TestProcessorRunner.processJavaSourceResourceFiles;
+import static org.paninij.analysis.TestProcessorRunner.processJavaSourceResourceFiles;
 import static java.util.Arrays.asList;
 
 @RunWith(Parameterized.class)

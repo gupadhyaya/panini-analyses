@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.paninij.analyses;
+package org.paninij.analysis;
 
 import boa.types.Ast;
 

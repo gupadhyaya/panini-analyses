@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.paninij.analyses.visitors;
+package org.paninij.analysis.visitors;
 
 import java.util.List;
 
