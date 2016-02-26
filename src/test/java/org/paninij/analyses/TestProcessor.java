@@ -49,6 +49,7 @@ public class TestProcessor extends AbstractProcessor {
         super.init(processingEnv);
         treeUtils = Trees.instance(processingEnv);
         treeAdapter = new SunTreeAdapter();
+        roots = new ArrayList<Ast.ASTRoot>();
     }
 
     /**
@@ -61,7 +62,9 @@ public class TestProcessor extends AbstractProcessor {
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         processingEnv.getMessager().printMessage(Diagnostic.Kind.NOTE, "Hello, World!");
         for (CompilationUnitTree root : getCompilationUnitTrees(roundEnv)) {
-            System.out.println(treeAdapter.adapt(root).toString());
+        	Ast.ASTRoot tree = treeAdapter.adapt(root);
+        	roots.add(tree);
+            System.out.println(tree.toString());
         }
         return false;
     }
