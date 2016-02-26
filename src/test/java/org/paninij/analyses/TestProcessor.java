@@ -17,8 +17,10 @@
 
 package org.paninij.analyses;
 
+import boa.types.Ast;
 import com.sun.source.tree.CompilationUnitTree;
 import com.sun.source.util.Trees;
+import boa.datagen.suntree.SunTreeAdapter;
 
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
@@ -40,6 +42,7 @@ public class TestProcessor extends AbstractProcessor {
 
     Trees treeUtils;
     SunTreeAdapter treeAdapter;
+    List<Ast.ASTRoot> roots;
 
     @Override
     public void init(ProcessingEnvironment processingEnv) {
@@ -69,5 +72,13 @@ public class TestProcessor extends AbstractProcessor {
             trees.add(treeUtils.getPath(root).getCompilationUnit());
         }
         return trees;
+    }
+
+    public List<Ast.ASTRoot> getASTRoots() {
+        return roots;
+    }
+
+    public Ast.ASTRoot getASTRoot(int idx) {
+        return roots.get(idx);
     }
 }

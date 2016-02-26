@@ -80,6 +80,7 @@
         <dependency>
           <groupId>boa</groupId>
           <artifactId>boa-datagen</artifactId>
+	  <version>0.1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
