@@ -64,7 +64,7 @@ public class TestProcessor extends AbstractProcessor {
         for (CompilationUnitTree root : getCompilationUnitTrees(roundEnv)) {
         	Ast.ASTRoot tree = treeAdapter.adapt(root);
         	roots.add(tree);
-            System.out.println(tree.toString());
+            //System.out.println(tree.toString());
         }
         return false;
     }

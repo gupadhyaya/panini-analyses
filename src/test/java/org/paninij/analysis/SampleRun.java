@@ -1,30 +1,26 @@
 package org.paninij.analysis;
 
+import static java.util.Arrays.asList;
+import static org.paninij.analysis.TestProcessorRunner.finish;
+import static org.paninij.analysis.TestProcessorRunner.processJavaSourceResourceFiles;
+
 import java.util.Collection;
 import java.util.List;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
-
-import static org.paninij.analysis.TestProcessorRunner.processJavaSourceResourceFiles;
-import static org.paninij.analysis.TestProcessorRunner.finish;
-import static java.util.Arrays.asList;
-
-@RunWith(Parameterized.class)
-public class SampleTest {
+public class SampleRun {
 	private final static String SRC_DIR_PREFIX = "org/paninij/proc/helloworld/";
 	private final static String FUTURE_DIR_PREFIX = "org/paninij/runtime/futures/";
 	private final static String MSG_DIR_PREFIX = "org/paninij/runtime/messages/";
-	private final String resourceFile;
-
-	public SampleTest(String resourceFile) {
-		this.resourceFile = resourceFile;
+	
+	public SampleRun() {
+		try {
+			processResourceFile();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-
-	@Parameters(name = "{0}")
-	public static Collection<String> knownTestResource() {
+	
+	public final Collection<String> knownTestResource() {
 		List<String> resources = asList(
 				"Console$Mockup.java",
 				"Console$Monitor.java",
@@ -98,11 +94,16 @@ public class SampleTest {
 
 		return resources;
 	}
-
-	@Test
+	
 	public void processResourceFile() {
-		processJavaSourceResourceFiles(resourceFile);
+		for (String resourceFile: knownTestResource())
+			processJavaSourceResourceFiles(resourceFile);
 		finish();
+	}
+	
+	public static void main(String[] args) {
+		
+		SampleRun run = new SampleRun();
 	}
 
 }

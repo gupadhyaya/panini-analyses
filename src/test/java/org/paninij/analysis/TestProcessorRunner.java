@@ -33,6 +33,8 @@ import static com.google.testing.compile.JavaSourcesSubjectFactory.javaSources;
 import static org.junit.Assert.assertTrue;
 
 public class TestProcessorRunner {
+	
+	public static ASTToSystemGraphConverter converter = new ASTToSystemGraphConverter();
 
     public static void processJavaSourceResourceFiles(Iterable<String> testSrcFiles) {
         TestProcessor proc = new TestProcessor();
@@ -43,10 +45,14 @@ public class TestProcessorRunner {
         assertTrue(proc.getASTRoots().size() >= 1);
 
         // invoke ASTToSystemGraph generator
-        new ASTToSystemGraphConverter(proc.getASTRoots());
+        converter.add(proc.getASTRoots().get(0));
         /*for (Ast.ASTRoot root : proc.getASTRoots()) {
             System.out.println(root.toString());
         }*/
+    }
+    
+    public static void finish() {
+        converter.buildGraph();
     }
 
     public static void processJavaSourceResourceFiles(String... testSrcFiles) {
